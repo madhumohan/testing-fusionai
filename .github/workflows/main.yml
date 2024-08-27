@@ -32,12 +32,5 @@ jobs:
       run: docker build -t nginx-cons-img .
     # Tag the Docker image for DigitalOcean Container Registry
     - name: Tag Docker image for DigitalOcean Container Registry
-    - env:
-        REGISTRY: registry.digitalocean.com
-        REGISTRY_NAME: maslow--registry
-        IMAGE_NAME: nginx-cons-img
-        IMAGE_TAG: latest
-      run: |
-        docker tag $IMAGE_NAME:latest $REGISTRY/$REGISTRY_NAME/$IMAGE_NAME:$IMAGE_TAG
-        docker tag $IMAGE_NAME:latest $REGISTRY/$REGISTRY_NAME/$IMAGE_NAME:latest
+      run: docker tag nginx-cons-img registry.digitalocean.com/maslow--registry/nginx-cons-img:latest
  
