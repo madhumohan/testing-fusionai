@@ -29,5 +29,5 @@ jobs:
 
     # Build the Docker image
     - name: Build the Docker image
-      run: ls -la
+      run: pwd
       #run: docker build -t nginx-cons-img .
