@@ -17,6 +17,7 @@ jobs:
     # The type of runner that the job will run on
     runs-on: self-hosted
 
+    # Authenticate with DigitalOcean Container Registry using doctl
     steps:
     - name: Install doctl
       uses: digitalocean/action-doctl@v2
@@ -26,10 +27,9 @@ jobs:
     - name: Log in to DO Container Registry
       run: doctl registry login --expiry-seconds 1200
 
-    # Authenticate with DigitalOcean Container Registry using doctl
-    - name: Authenticate with DigitalOcean Container Registry
-      run: doctl auth init --access-token ${{ secrets.DIGITALOCEAN_API_TOKEN }}    
-    
     # Build the Docker image
     - name: Build the Docker image
       run: docker build -t nginx-cons-img .
+    # Tag the Docker image for DigitalOcean Container Registry
+    - name: Tag Docker image for DigitalOcean Container Registry
+      run: docker tag nginx-cons-img registry.digitalocean.com/maslow--registry/nginx-cons-img:latest
