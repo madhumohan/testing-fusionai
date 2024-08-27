@@ -8,7 +8,7 @@ FROM nginx:latest
 #WORKDIR /usr/share/my-app
 
 # Copy static files
-#COPY <source-path> <destination-path>
+#COPY <source-path> <destination-path>-
 COPY index.html /usr/share/nginx/html/
 
 #COPY default.conf/ /etc/nginx/conf.d/
