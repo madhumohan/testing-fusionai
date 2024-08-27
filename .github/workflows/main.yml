@@ -44,6 +44,5 @@ jobs:
       run: |
           docker pull ${{ secrets.DIGITALOCEAN_USERNAME }}/nginx-cons-img
           docker run -d -p 8087:80 --name my-nginx-con  ${{ secrets.DIGITALOCEAN_USERNAME }}/nginx-cons-img:latest
-
           #docker pull ${{ secrets.DOCKERHUB_USERNAME }}/nginx-cons-img
           #docker run -d -p 8087:80 --name my-nginx-con  ${{ secrets.DOCKERHUB_USERNAME }}/nginx-cons-img:latest
