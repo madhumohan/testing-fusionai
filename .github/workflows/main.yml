@@ -21,16 +21,5 @@ jobs:
     steps:
     # Runs a single command using the runners shell cmds
     - uses: actions/checkout@v3
-
-      # Authenticate with DigitalOcean Container Registry using doctl
-    - name: Authenticate with DigitalOcean Container Registry
-      run: doctl auth init --access-token ${{ secrets.DIGITALOCEAN_API_TOKEN }}
-Use: The command is used in a GitHub Actions workflow to authenticate the doctl command-line tool with DigitalOcean.
-
-      # Build the Docker image
-    - name: Build Docker image
+    - name: Build the Docker image
       run: docker build -t nginx-cons-img .
-
-      # Tag the Docker image for DigitalOcean Container Registry
-    - name: Tag Docker image for DigitalOcean Container Registry
-      run: docker tag nginx-cons-img registry.digitalocean.com/maslow--registry/nginx-cons-img:latest
