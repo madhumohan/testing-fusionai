@@ -36,7 +36,7 @@ jobs:
         REGISTRY: registry.digitalocean.com
         REGISTRY_NAME: maslow--registry
         IMAGE_NAME: nginx-cons-img
-        IMAGE_TAG: ${{ github.sha }}
+        IMAGE_TAG: latest
       run: |
         docker tag $IMAGE_NAME:latest $REGISTRY/$REGISTRY_NAME/$IMAGE_NAME:$IMAGE_TAG
         docker tag $IMAGE_NAME:latest $REGISTRY/$REGISTRY_NAME/$IMAGE_NAME:latest
