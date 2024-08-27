@@ -17,15 +17,26 @@ jobs:
     # The type of runner that the job will run on
     runs-on: self-hosted
 
+    steps:
+    - name: Install doctl
+      uses: digitalocean/action-doctl@v2
+      with:
+        token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+    
+    - name: Log in to DO Container Registry
+      run: doctl registry login --expiry-seconds 1200
+
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     # Runs a single command using the runners shell cmds
     - uses: actions/checkout@v3
     - name: Build the Docker image
       run: docker build -t nginx-cons-img .
+	  
     # Authenticate with DigitalOcean Container Registry using doctl
-    - name: Authenticate with DigitalOcean Container Registry
-      run: doctl auth init --access-token ${{ secrets.DIGITALOCEAN_API_TOKEN }}
+    #- name: Authenticate with DigitalOcean Container Registry
+    # run: doctl auth init --access-token ${{ secrets.DIGITALOCEAN_API_TOKEN }}
+	  
     # Build the Docker image
     - name: Build Docker image
       run: docker build -t nginx-cons-img .
