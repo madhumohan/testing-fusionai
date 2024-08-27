@@ -37,4 +37,4 @@ jobs:
 		# Push the Docker image to DigitalOcean Container Registry
     - name: Push Docker image to DigitalOcean Container Registry
       run: |
-        doctl registry login --expiry-seconds 1000
+        doctl registry login --expiry-seconds 1200
