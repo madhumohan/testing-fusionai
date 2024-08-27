@@ -16,23 +16,21 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: self-hosted
-	
-Use: GitHub Actions workflow is used to securely pass the DigitalOcean API token to the workflow as an environment variable.
-    steps:
-      # Checkout the repository
-      - name: Checkout code
-        uses: actions/checkout@v2
-Use: command in a GitHub Actions workflow is used to check out the repository's code to the runner's workspace
 
-# Authenticate with DigitalOcean Container Registry using doctl
-      - name: Authenticate with DigitalOcean Container Registry
-        run: doctl auth init --access-token ${{ secrets.DIGITALOCEAN_API_TOKEN }}
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    # Runs a single command using the runners shell cmds
+    - uses: actions/checkout@v3
+
+      # Authenticate with DigitalOcean Container Registry using doctl
+    - name: Authenticate with DigitalOcean Container Registry
+      run: doctl auth init --access-token ${{ secrets.DIGITALOCEAN_API_TOKEN }}
 Use: The command is used in a GitHub Actions workflow to authenticate the doctl command-line tool with DigitalOcean.
 
       # Build the Docker image
-      - name: Build Docker image
-        run: docker build -t nginx-cons-img .
+    - name: Build Docker image
+      run: docker build -t nginx-cons-img .
 
       # Tag the Docker image for DigitalOcean Container Registry
-      - name: Tag Docker image for DigitalOcean Container Registry
-        run: docker tag nginx-cons-img registry.digitalocean.com/maslow--registry/nginx-cons-img:latest
+    - name: Tag Docker image for DigitalOcean Container Registry
+      run: docker tag nginx-cons-img registry.digitalocean.com/maslow--registry/nginx-cons-img:latest
