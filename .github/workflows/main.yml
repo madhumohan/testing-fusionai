@@ -31,3 +31,7 @@ jobs:
     - name: Build the Docker image
       #run: pwd
       run: docker build -t nginx-cons-img .
+    
+    # Tag the Docker image for DigitalOcean Container Registry
+    - name: Tag Docker image for DigitalOcean Container Registry
+      run: docker tag nginx-cons-img registry.digitalocean.com/maslow--registry/nginx-cons-img:latest
