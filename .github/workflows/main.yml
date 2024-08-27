@@ -29,5 +29,5 @@ jobs:
 
     # Build the Docker image
     - name: Build the Docker image
-      run: docker build -t nginx-img . --file Dockerfile
+      run:  docker build . --file Dockerfile --tag nginx-img:$(date +%s)
       #run: docker build -t nginx-cons-img .
