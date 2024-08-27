@@ -25,3 +25,11 @@ jobs:
     
     - name: Log in to DO Container Registry
       run: doctl registry login --expiry-seconds 1200
+
+    # Authenticate with DigitalOcean Container Registry using doctl
+    - name: Authenticate with DigitalOcean Container Registry
+      run: doctl auth init --access-token ${{ secrets.DIGITALOCEAN_API_TOKEN }}    
+    
+    # Build the Docker image
+    - name: Build the Docker image
+      run: docker build -t nginx-cons-img .
