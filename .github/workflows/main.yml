@@ -42,4 +42,4 @@ jobs:
     
     # Run the Docker Container
     - name: Run the Docker Container
-      run: docker run -d ---name my-nginx -p 8087:80 registry.digitalocean.com/maslow--registry/nginx-cons-img:latest
+      run: docker run -d --name my-nginx -p 8087:80 registry.digitalocean.com/maslow--registry/nginx-cons-img:latest
