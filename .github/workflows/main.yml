@@ -36,5 +36,6 @@ jobs:
 
 		# Push the Docker image to DigitalOcean Container Registry
     - name: Push Docker image to DigitalOcean Container Registry
-      run: |
-        doctl registry login --expiry-seconds 1200
+      run: doctl registry login --expiry-seconds 1200
+    - name: Push image to Container Registry
+      run: docker push registry.digitalocean.com/maslow--registry/nginx-cons-img:latest
