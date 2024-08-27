@@ -7,7 +7,7 @@ FROM nginx:latest
 #Working directory
 #WORKDIR /usr/share/my-app
 
-# Copy static files
+# Copy static files path
 #COPY <source-path> <destination-path>
 COPY index.html /usr/share/nginx/html/
 
